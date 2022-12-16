@@ -1,0 +1,42 @@
+﻿@page
+@model ZooCode.Pages.ZooAnimals.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Animals in Zoos</h1>
+
+<p>
+    <a asp-page="Create">Create New Relation Between Zoo and Animal</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ZooAnimal[0].Zoo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ZooAnimal[0].Animal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ZooAnimal) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zoo.Zoo_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Animal.Animal_name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ZooAnimalID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ZooAnimalID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ZooAnimalID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

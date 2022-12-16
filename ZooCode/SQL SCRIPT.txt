@@ -1,0 +1,59 @@
+CREATE TABLE [dbo].[Zoo] (
+    [Zoo_id]   INT  IDENTITY (1,1) NOT NULL,
+    [Name]     VARCHAR (30) NOT NULL,
+    [Address]  VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Zoo_id] ASC)
+);
+
+CREATE TABLE [dbo].[Animal] (
+    [Animal_id] INT  IDENTITY (1,1) NOT NULL,
+    [Name]      NVARCHAR (50)   NOT NULL,
+    PRIMARY KEY CLUSTERED ([Animal_id] ASC)
+);
+
+CREATE TABLE [dbo].[ZooAnimals] (
+    [Zoo_id]    INT    NOT NULL,
+    [Animal_id] INT    NOT NULL,
+    CONSTRAINT [PK_Table] PRIMARY KEY CLUSTERED ([Animal_id] ASC, [Zoo_id] ASC),
+    FOREIGN KEY ([Zoo_id]) REFERENCES [dbo].[Zoo] ([Zoo_id]) ON DELETE CASCADE,
+    FOREIGN KEY ([Animal_id]) REFERENCES [dbo].[Animal] ([Animal_id]) ON DELETE CASCADE
+);
+
+INSERT INTO Zoo VALUES('Amager Zoo','Amagergade');
+INSERT INTO Zoo VALUES('Greve Fiskeland','Greve strandvej');
+INSERT INTO Zoo VALUES('Aalborg Zoo','Aalborg Torv');
+INSERT INTO Zoo VALUES('Roskilde Fuglehus','Algade');
+INSERT INTO Zoo VALUES('Odense Zoo','Kerteminde park');
+INSERT INTO Animal VALUES('Tiger');
+INSERT INTO Animal VALUES('Elephant');
+INSERT INTO Animal VALUES('Eagle');
+INSERT INTO Animal VALUES('Shark');
+INSERT INTO Animal VALUES('Dolphin');
+INSERT INTO Animal VALUES('Zebra');
+INSERT INTO Animal VALUES('Snake');
+INSERT INTO Animal VALUES('Panda');
+INSERT INTO Animal VALUES('Vulture');
+INSERT INTO Animal VALUES('Monkey');
+INSERT INTO Animal VALUES('Seal');
+INSERT INTO Animal VALUES('Turtle');
+INSERT INTO Animal VALUES('Varan');
+INSERT INTO ZooAnimals VALUES(1,1);
+INSERT INTO ZooAnimals VALUES(1,2);
+INSERT INTO ZooAnimals VALUES(1,6);
+INSERT INTO ZooAnimals VALUES(1,8);
+INSERT INTO ZooAnimals VALUES(1,10);
+INSERT INTO ZooAnimals VALUES(2,4);
+INSERT INTO ZooAnimals VALUES(2,5);
+INSERT INTO ZooAnimals VALUES(2,11);
+INSERT INTO ZooAnimals VALUES(3,7);
+INSERT INTO ZooAnimals VALUES(3,12);
+INSERT INTO ZooAnimals VALUES(3,13);
+INSERT INTO ZooAnimals VALUES(4,3);
+INSERT INTO ZooAnimals VALUES(4,7);
+INSERT INTO ZooAnimals VALUES(4,9);
+INSERT INTO ZooAnimals VALUES(5,3);
+INSERT INTO ZooAnimals VALUES(5,7);
+INSERT INTO ZooAnimals VALUES(5,9);
+INSERT INTO ZooAnimals VALUES(5,10);
+INSERT INTO ZooAnimals VALUES(5,12);
+INSERT INTO ZooAnimals VALUES(5,13);
