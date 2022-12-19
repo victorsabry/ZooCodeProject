@@ -1,1 +1,18 @@
-﻿
+﻿INSERT INTO Zoo VALUES('Amager Zoo','Amagergade');
+INSERT INTO Zoo VALUES('Greve Fiskeland','Greve strandvej');
+INSERT INTO Zoo VALUES('Aalborg Zoo','Aalborg Torv');
+INSERT INTO Zoo VALUES('Roskilde Fuglehus','Algade');
+INSERT INTO Zoo VALUES('Odense Zoo','Kerteminde park');
+INSERT INTO Animal VALUES('Tiger');
+INSERT INTO Animal VALUES('Elephant');
+INSERT INTO Animal VALUES('Eagle');
+INSERT INTO Animal VALUES('Shark');
+INSERT INTO Animal VALUES('Dolphin');
+INSERT INTO Animal VALUES('Zebra');
+INSERT INTO Animal VALUES('Snake');
+INSERT INTO Animal VALUES('Panda');
+INSERT INTO Animal VALUES('Vulture');
+INSERT INTO Animal VALUES('Monkey');
+INSERT INTO Animal VALUES('Seal');
+INSERT INTO Animal VALUES('Turtle');
+INSERT INTO Animal VALUES('Varan');
