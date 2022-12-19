@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using ZooCode.Data;
 using ZooCode.Models;
 
@@ -20,8 +21,9 @@ namespace ZooCode.Pages.Animals
             _context = context;
         }
 
-        [BindProperty]
+        [BindProperty]        
         public Animal Animal { get; set; }
+        public string ErrorEditMSG { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -33,7 +35,7 @@ namespace ZooCode.Pages.Animals
             Animal = await _context.Animal.FirstOrDefaultAsync(m => m.AnimalID == id);
 
             if (Animal == null)
-            {
+            {                
                 return NotFound();
             }
             return Page();
@@ -45,6 +47,13 @@ namespace ZooCode.Pages.Animals
         {
             if (!ModelState.IsValid)
             {
+                return Page();
+            }
+            
+            bool exists = _context.Animal.Any(a => a.Animal_name == Animal.Animal_name);
+            if (exists)
+            {
+                ErrorEditMSG= "THAT ANIMAL ALREADY EXISTS. TRY A DIFFERENT ONE.";
                 return Page();
             }
 

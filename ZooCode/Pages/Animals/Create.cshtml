@@ -19,6 +19,12 @@
                 <span asp-validation-for="Animal.Animal_name" class="text-danger"></span>
             </div>
             <div class="form-group">
+                @if (Model.ErrorCreateMSG !=null)
+                {
+                    @Model.ErrorCreateMSG;
+                } 
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

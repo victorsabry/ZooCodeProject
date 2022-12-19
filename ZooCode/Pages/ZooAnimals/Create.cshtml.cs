@@ -21,13 +21,14 @@ namespace ZooCode.Pages.ZooAnimals
 
         public IActionResult OnGet()
         {
-        ViewData["AnimalID"] = new SelectList(_context.Animal, "AnimalID", "Animal_name");
-        ViewData["ZooID"] = new SelectList(_context.Zoo, "ZooID", "Zoo_name");
+            ViewData["AnimalID"] = new SelectList(_context.Animal, "AnimalID", "Animal_name");
+            ViewData["ZooID"] = new SelectList(_context.Zoo, "ZooID", "Zoo_name");
             return Page();
         }
 
         [BindProperty]
         public ZooAnimal ZooAnimal { get; set; }
+        public string ErrorCreateMSG { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -37,7 +38,15 @@ namespace ZooCode.Pages.ZooAnimals
                 return Page();
             }
 
-            _context.ZooAnimal.Add(ZooAnimal);
+            bool exists = _context.ZooAnimal.Any(za => za.AnimalID == ZooAnimal.AnimalID && za.ZooID == ZooAnimal.ZooID);
+            if (exists)
+            {
+                ErrorCreateMSG = "THIS RELATION BETWEEN ZOO AND ANIMAL ALREADY EXISTS. TRY A DIFFERENT RELATION.";
+                return OnGet();                                
+            }
+
+            _context.ZooAnimal.Add(ZooAnimal);            
+
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

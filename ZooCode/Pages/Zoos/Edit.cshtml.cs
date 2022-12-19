@@ -22,6 +22,7 @@ namespace ZooCode.Pages.Zoos
 
         [BindProperty]
         public Zoo Zoo { get; set; }
+        public string ErrorEditMSG { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -46,6 +47,13 @@ namespace ZooCode.Pages.Zoos
             if (!ModelState.IsValid)
             {
                 return Page();
+            }
+
+            bool exists = _context.Zoo.Any(z => z.Zoo_name == Zoo.Zoo_name && z.Zoo_address == Zoo.Zoo_address);
+            if (exists)
+            {
+                ErrorEditMSG = "THAT ZOO ALREADY EXISTS. TRY A DIFFERENT NAME OR ADDRESS.";
+                return Page();                
             }
 
             _context.Attach(Zoo).State = EntityState.Modified;

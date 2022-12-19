@@ -2,10 +2,12 @@
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace ZooCode.Migrations
 {
     /// <inheritdoc />
-    public partial class AddMigrationZooProjectMigrationContext : Migration
+    public partial class Create : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -61,6 +63,36 @@ namespace ZooCode.Migrations
                         principalTable: "Zoo",
                         principalColumn: "ZooID",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Animal",
+                columns: new[] { "AnimalID", "Animal_name" },
+                values: new object[,]
+                {
+                    { 1, "Tiger" },
+                    { 2, "Panda" },
+                    { 3, "Eagle" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Zoo",
+                columns: new[] { "ZooID", "Zoo_address", "Zoo_name" },
+                values: new object[,]
+                {
+                    { 1, "Maglegaardsvej 2", "Zealand Zoo" },
+                    { 2, "Aalborg torv", "Aalborg Zoo" },
+                    { 3, "Køge Park", "Køge Fuglebur" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ZooAnimal",
+                columns: new[] { "ZooAnimalID", "AnimalID", "ZooID" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 2, 2 },
+                    { 3, 3, 3 }
                 });
 
             migrationBuilder.CreateIndex(

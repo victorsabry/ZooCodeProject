@@ -22,6 +22,7 @@ namespace ZooCode.Pages.ZooAnimals
 
         [BindProperty]
         public ZooAnimal ZooAnimal { get; set; }
+        public string ErrorEditMSG { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -49,6 +50,15 @@ namespace ZooCode.Pages.ZooAnimals
         {
             if (!ModelState.IsValid)
             {
+                return Page();
+            }
+
+            bool exists = _context.ZooAnimal.Any(za => za.AnimalID == ZooAnimal.AnimalID && za.ZooID == ZooAnimal.ZooID);
+            if (exists)
+            {
+                ErrorEditMSG = "THIS RELATION BETWEEN ZOO AND ANIMAL ALREADY EXISTS. TRY A DIFFERENT RELATION.";                
+                ViewData["AnimalID"] = new SelectList(_context.Animal, "AnimalID", "Animal_name");
+                ViewData["ZooID"] = new SelectList(_context.Zoo, "ZooID", "Zoo_name");
                 return Page();
             }
 

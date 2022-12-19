@@ -25,6 +25,12 @@
                 <span asp-validation-for="ZooAnimal.AnimalID" class="text-danger"></span>
             </div>
             <div class="form-group">
+                @if (Model.ErrorEditMSG != null)
+                {
+                    @Model.ErrorEditMSG;                    
+                }
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

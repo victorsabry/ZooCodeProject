@@ -37,6 +37,23 @@ namespace ZooCode.Migrations
                     b.HasKey("AnimalID");
 
                     b.ToTable("Animal");
+
+                    b.HasData(
+                        new
+                        {
+                            AnimalID = 1,
+                            Animalname = "Tiger"
+                        },
+                        new
+                        {
+                            AnimalID = 2,
+                            Animalname = "Panda"
+                        },
+                        new
+                        {
+                            AnimalID = 3,
+                            Animalname = "Eagle"
+                        });
                 });
 
             modelBuilder.Entity("ZooCode.Models.Zoo", b =>
@@ -60,6 +77,26 @@ namespace ZooCode.Migrations
                     b.HasKey("ZooID");
 
                     b.ToTable("Zoo");
+
+                    b.HasData(
+                        new
+                        {
+                            ZooID = 1,
+                            Zooaddress = "Maglegaardsvej 2",
+                            Zooname = "Zealand Zoo"
+                        },
+                        new
+                        {
+                            ZooID = 2,
+                            Zooaddress = "Aalborg torv",
+                            Zooname = "Aalborg Zoo"
+                        },
+                        new
+                        {
+                            ZooID = 3,
+                            Zooaddress = "Køge Park",
+                            Zooname = "Køge Fuglebur"
+                        });
                 });
 
             modelBuilder.Entity("ZooCode.Models.ZooAnimal", b =>
@@ -83,6 +120,26 @@ namespace ZooCode.Migrations
                     b.HasIndex("ZooID");
 
                     b.ToTable("ZooAnimal");
+
+                    b.HasData(
+                        new
+                        {
+                            ZooAnimalID = 1,
+                            AnimalID = 1,
+                            ZooID = 1
+                        },
+                        new
+                        {
+                            ZooAnimalID = 2,
+                            AnimalID = 2,
+                            ZooID = 2
+                        },
+                        new
+                        {
+                            ZooAnimalID = 3,
+                            AnimalID = 3,
+                            ZooID = 3
+                        });
                 });
 
             modelBuilder.Entity("ZooCode.Models.ZooAnimal", b =>

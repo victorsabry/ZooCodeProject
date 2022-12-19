@@ -11,8 +11,13 @@ namespace ZooCode.Models
     {
         public int ZooAnimalID { get; set; }
         public int ZooID { get; set; }
-        public Zoo Zoo { get; set; }                       
+
+        [Display(Name = "Zoo")]
+        public Zoo Zoo { get; set; }     
+        
         public int AnimalID { get; set; }
+
+        [Display(Name = "Animal")]
         public Animal Animal { get; set; }
 
         //[ForeignKey(nameof(Animal_id))]

@@ -10,9 +10,10 @@ namespace ZooCode.Models
     public class Animal
     {        
         public int AnimalID { get; set; }
-        [Required]
+        
         [StringLength(50)]
         [Display(Name = "Animal")]
+        [Required(ErrorMessage = "Please enter a name for the animal type")]     
         public string Animal_name { get; set; }        
         public virtual ICollection<ZooAnimal> ZooAnimalCollection { get; set; }
     }

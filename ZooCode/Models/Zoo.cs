@@ -9,14 +9,14 @@ namespace ZooCode.Models
 {    
     public class Zoo
     {                        
-        public int ZooID { get; set; }
-        [Required]
+        public int ZooID { get; set; }        
         [StringLength(30)]
         [Display(Name = "Zoo Name")]
-        public string Zoo_name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter the name of the zoo")]
+        public string Zoo_name { get; set; }        
         [StringLength(50)]
         [Display(Name = "Zoo Address")]
+        [Required(ErrorMessage = "Please enter the address of the zoo")]
         public string Zoo_address { get; set; }
 
         

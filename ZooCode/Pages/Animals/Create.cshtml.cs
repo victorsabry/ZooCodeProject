@@ -26,6 +26,7 @@ namespace ZooCode.Pages.Animals
 
         [BindProperty]
         public Animal Animal { get; set; }
+        public string ErrorCreateMSG { get; set; }  
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -34,6 +35,14 @@ namespace ZooCode.Pages.Animals
             {
                 return Page();
             }
+
+            bool exists = _context.Animal.Any(a => a.Animal_name == Animal.Animal_name);
+            if (exists)
+            {
+                ErrorCreateMSG = "THAT ANIMAL ALREADY EXISTS. TRY A DIFFERENT ONE.";
+                return Page(); 
+            }
+               
 
             _context.Animal.Add(Animal);
             await _context.SaveChangesAsync();
