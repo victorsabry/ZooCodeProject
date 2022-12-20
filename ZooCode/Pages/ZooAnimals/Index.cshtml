@@ -17,6 +17,9 @@
                 @Html.DisplayNameFor(model => model.ZooAnimal[0].Zoo)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.ZooAnimal[0].Zoo.Zoo_address)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.ZooAnimal[0].Animal)
             </th>
             <th></th>
@@ -28,6 +31,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Zoo.Zoo_name)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zoo.Zoo_address)
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Animal.Animal_name)
             </td>
