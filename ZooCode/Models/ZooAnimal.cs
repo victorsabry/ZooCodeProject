@@ -18,12 +18,6 @@ namespace ZooCode.Models
         public int AnimalID { get; set; }
 
         [Display(Name = "Animal")]
-        public Animal Animal { get; set; }
-
-        //[ForeignKey(nameof(Animal_id))]
-        //[InverseProperty("ZooAnimals")]
-       
-        //[ForeignKey(nameof(ZooAnimal_id))]
-        //[InverseProperty("ZooAnimals")]        
+        public Animal Animal { get; set; }             
     }
 }
